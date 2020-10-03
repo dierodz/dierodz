@@ -56,11 +56,15 @@
 
 .footer {
   width: 100%;
-  height: 100px;
+  height: 4rem;
   border-top: 1px solid #eaeaea;
+  background-color: #ffffffea;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
 }
 
 .footer img {
@@ -136,7 +140,8 @@
 }
 
 .logo {
-  height: 1em;
+  height: 1.5em;
+  object-fit: cover;
 }
 
 .particles {
@@ -148,9 +153,27 @@
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 719px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .footer {
+    position: relative
+  }
+  .name {
+    flex-direction: column;
+    align-items: center;
+    section {
+      align-items: center;
+  
+      .title {
+        font-size: 3rem;
+      }
+            
+      .description {
+        font-size: 1.25rem;
+      }
+    }
   }
 }

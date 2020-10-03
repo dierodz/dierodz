@@ -1,7 +1,9 @@
 import Head from 'next/head'
+
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -32,6 +34,9 @@ export default function Home() {
         >
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img src="/next.svg" alt="Next.js Logo" className={styles.logo} />
+          <img src="/react.svg" alt="React.js Logo" className={styles.logo} />
+          <img src="/sass.svg" alt="Sass Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
