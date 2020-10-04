@@ -1,14 +1,18 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
+import ReactGA from "react-ga"
 import NavMenu from '../components/NavMenu'
 
 import styles from '../styles/Home.module.scss'
+
+ReactGA.initialize(process.env.GA)
 
 export default function Home() {
   const containerRef = useRef(null)
   const mainRef = useRef(null)
 
   const [selected, setSelected] = useState(0)
+  const [page, setPage] = useState('')
 
   function onSelectMenu(i) {
     mainRef.current.children[i].scrollIntoView({ behavior: "smooth" })
@@ -22,10 +26,34 @@ export default function Home() {
       mainRef.current.children[3].getBoundingClientRect(),
     ]
     const callback = () => {
-      if (bounding[3].top <= containerRef.current.scrollTop) setSelected(3)
-      else if (bounding[2].top <= containerRef.current.scrollTop) setSelected(2)
-      else if (bounding[1].top <= containerRef.current.scrollTop) setSelected(1)
-      else if (bounding[0].top <= containerRef.current.scrollTop) setSelected(0)
+      if (bounding[3].top <= containerRef.current.scrollTop) {
+        setSelected(3)
+        setPage('| Contacto')
+        ReactGA.pageview(
+          '/contact'
+        )
+      }
+      else if (bounding[2].top <= containerRef.current.scrollTop) {
+        setSelected(2)
+        setPage('| Skills')
+        ReactGA.pageview(
+          '/skills'
+        )
+      }
+      else if (bounding[1].top <= containerRef.current.scrollTop) {
+        setSelected(1)
+        setPage('| Sobre mí')
+        ReactGA.pageview(
+          '/abaut'
+        )
+      }
+      else if (bounding[0].top <= containerRef.current.scrollTop) {
+        setSelected(0)
+        setPage('')
+        ReactGA.pageview(
+          '/'
+        )
+      }
     }
     containerRef.current.addEventListener('scroll', callback)
     return () => containerRef.current.removeEventListener('scroll', callback)
@@ -34,7 +62,7 @@ export default function Home() {
   return (
     <div className={styles.container} ref={containerRef}>
       <Head>
-        <title>Create Next App</title>
+        <title>Diego Rodríguez {page}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavMenu onSelect={onSelectMenu} selected={selected} />
@@ -57,10 +85,11 @@ export default function Home() {
           <span className={styles.sectionTitle}>sobre mí</span>
           <div className={styles.card}>
             <p>
-              Nací el 6 de abril de 1991 en Uruguay. Soy apasionado por la tecnología, autodidacta.
-              Manejo tecnologías React JS, Redux, Electron JS, Express, Passport, GraphQL, Next JS Vercel, Node, Sass entre otras.
-              Experiencia en tecnologías AWS S3 y SES, Google Firebase.
-              Además de manejar herramientas de diseño como Adobe Illustrator y Corel Draw
+              Nací el 6 de abril de 1991 en Uruguay. Soy apasionado por la tecnología desde que tengo memoria,
+              a lo largo de mi vida laboral me he encontrado con muchos retos, y ser autodidacta me ha ayudado a resolverlos.
+              Trabajar en equipo y buscar el exito grupal, es algo que considero muy importante, aunque nunca descarto algún reto personal.
+              Como desarrollador soy proactivo, organizado y metodico, me adapto facilmente ante cambios y estoy abierto a aprender nuevas tecnologías
+              y lenguajes.
             </p>
           </div>
         </section>
@@ -68,7 +97,6 @@ export default function Home() {
           <span className={styles.sectionTitle}>skills</span>
           <div className={styles.card}>
             <p>
-              Nací el 6 de abril de 1991 en Uruguay. Soy apasionado por la tecnología, autodidacta.
               Manejo tecnologías React JS, Redux, Electron JS, Express, Passport, GraphQL, Next JS Vercel, Node, Sass entre otras.
               Experiencia en tecnologías AWS S3 y SES, Google Firebase.
               Además de manejar herramientas de diseño como Adobe Illustrator y Corel Draw
@@ -77,13 +105,22 @@ export default function Home() {
         </section>
         <section className={styles.section}>
           <span className={styles.sectionTitle}>contacto</span>
-          <div className={styles.card}>
-            <p>
-              Nací el 6 de abril de 1991 en Uruguay. Soy apasionado por la tecnología, autodidacta.
-              Manejo tecnologías React JS, Redux, Electron JS, Express, Passport, GraphQL, Next JS Vercel, Node, Sass entre otras.
-              Experiencia en tecnologías AWS S3 y SES, Google Firebase.
-              Además de manejar herramientas de diseño como Adobe Illustrator y Corel Draw
-            </p>
+          <div className={[styles.card, styles.businessCard].join(' ')}>
+            <img src="/qrcode.svg" alt="v-card" />
+            <div>
+              <span>
+                <label>Nombre completo:</label>
+                Diego Rodríguez
+              </span>
+              <span>
+                <label>Email:</label>
+                dierodz@gmail.com
+              </span>
+              <span>
+                <label>Telefono:</label>
+                +598 97 074 788
+              </span>
+            </div>
           </div>
         </section>
       </main>
