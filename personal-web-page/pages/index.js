@@ -2,10 +2,7 @@ import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import ReactGA from "react-ga"
 import NavMenu from '../components/NavMenu'
-
 import styles from '../styles/Home.module.scss'
-
-ReactGA.initialize(process.env.GA)
 
 export default function Home() {
   const containerRef = useRef(null)
@@ -17,6 +14,8 @@ export default function Home() {
   function onSelectMenu(i) {
     mainRef.current.children[i].scrollIntoView({ behavior: "smooth" })
   }
+
+  useEffect(() => ReactGA.initialize('UA-154949513-2'), [])
 
   useEffect(() => {
     var bounding = [
