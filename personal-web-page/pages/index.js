@@ -106,20 +106,26 @@ export default function Home() {
         <section className={styles.section}>
           <span className={styles.sectionTitle}>contacto</span>
           <div className={[styles.card, styles.businessCard].join(' ')}>
-            <img src="/qrcode.svg" alt="v-card" />
-            <div>
-              <span>
-                <label>Nombre completo:</label>
+            <img className={styles.qr} src="/qrcode.svg" alt="v-card" />
+            <span>
+              <label>Nombre completo:</label>
                 Diego Rodríguez
               </span>
-              <span>
-                <label>Email:</label>
+            <span>
+              <label>Email:</label>
                 dierodz@gmail.com
               </span>
-              <span>
-                <label>Telefono:</label>
+            <span>
+              <label>Telefono:</label>
                 +598 97 074 788
               </span>
+            <div className={styles.social}>
+              <a href="https://github.com/dierodz">
+                <img src="/github.svg" alt="Github" />
+              </a>
+              <a href="https://www.linkedin.com/in/dierodz">
+                <img src="/linkedin.svg" alt="LinkedIn" />
+              </a>
             </div>
           </div>
         </section>
