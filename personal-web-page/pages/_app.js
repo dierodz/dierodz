@@ -5,7 +5,6 @@ import { useMemo } from 'react'
 
 function MyApp({ Component, pageProps }) {
   const bp = useBreakpoint()
-  console.log(bp)
 
   const particlesNumber = useMemo(() => {
     switch (bp) {
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Component {...pageProps} />
-      <Particles style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, zIndex: 0 }} width={'100%'} height={'100%'} params={{
+      <Particles style={{ position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: -100 }} width={'100%'} height={'100%'} params={{
         particles: {
           color: "#3e3e3e",
           number: { value: particlesNumber },
