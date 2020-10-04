@@ -135,6 +135,12 @@
 }
 
 @media (max-width: 719px) {
+  .container {
+    height: 100%;
+  }
+  .section {
+    height: 100vh;
+  }
   .grid {
     width: 100%;
     flex-direction: column;
@@ -142,9 +148,16 @@
   .footer {
     position: relative
   }
+  .card {
+    width: calc(100% - 6rem);
+  }
+  .sectionTitle {
+    margin-left: 3rem;
+  }
   .name {
     flex-direction: column;
     align-items: center;
+    width: calc(100% - 6rem);
     section {
       align-items: center;
   

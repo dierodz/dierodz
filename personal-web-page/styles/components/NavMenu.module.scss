@@ -73,3 +73,21 @@
    }
  }
 }
+@media (max-width: 719px) { 
+  .navMenu {
+    right: 0rem;
+    bottom: 0rem;
+  }
+  .menuItem{
+    &:hover {
+      label {
+        display: none;
+      }
+    }
+  }
+  .menuItem.active{
+    label {
+      display: none;
+    }
+  }
+}
