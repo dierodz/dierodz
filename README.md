@@ -7,5 +7,7 @@ Experiencia en tecnologías AWS S3 y SES, Google cloud / Firebase.
 Además de manejar herramientas de diseño como Adobe Illustrator y Corel Draw.
 
 LinkedIn: https://www.linkedin.com/in/dierodz
+
 Web: https://dierodz.vercel.app
+
 Email: dierodz91@gmail.com 
